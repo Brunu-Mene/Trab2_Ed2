@@ -2,6 +2,8 @@
 #define SUFFIX_H
 
 #include "str.h"
+#include <stdio.h>
+#include <stdlib.h>
 
 typedef struct {
     String *s;
