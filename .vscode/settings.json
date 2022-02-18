@@ -1,6 +1,7 @@
 {
     "files.associations": {
         "utilitarios.h": "c",
-        "stdio.h": "c"
+        "stdio.h": "c",
+        "suffix.h": "c"
     }
 }

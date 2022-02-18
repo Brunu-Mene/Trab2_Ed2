@@ -4,12 +4,12 @@
 
 int main(int argv, char **args){
     String* textoString = converteArquivo(args[1]);
-    Suffix **suf = create_suf_array(textoString, textoString->len);
-    print_suf_array(suf,textoString->len);
-
-
-    
-    destroy_suf_array(suf, textoString->len);
+    Suffix **arraySuf = create_suf_array(textoString, textoString->len);
+    //print_suf_array(arraySuf,textoString->len);
+    //sort_suf_array(arraySuf, textoString->len);
+    shell_sort_suf_array(arraySuf,textoString->len);
+    print_suf_array(arraySuf,textoString->len);
+    destroy_suf_array(arraySuf, textoString->len);
     destroy_string(textoString);
     return 0;
 }
