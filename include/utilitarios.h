@@ -2,13 +2,16 @@
 #define UTILITARIOS_H
 
 #include "../include/str.h"
-//#include "../suffix/str.h"
-//#include <sys/stat.h>
+#include <stdbool.h>
 #include <stdlib.h>
 #include <stdio.h>
 
-String* le_arquivo(char *adress);
+String* converteArquivo(char *adress);
 FILE *abreArquivo(char *adress);
 void merge_string();
+
+
+char *alocaString(long long unsigned tam);
+void liberaPonteiro(void *pointer);
 
 #endif

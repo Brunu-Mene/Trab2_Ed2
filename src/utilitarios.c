@@ -1,26 +1,28 @@
 #include "../include/utilitarios.h"
 
-String* le_arquivo(char *adress){
+String* converteArquivo(char *adress){
     FILE *arq = abreArquivo(adress);
     long long unsigned int tam, i = 0;
-    int aux = 0;
+    bool aux = false;
     fscanf(arq,"%lld\n",&tam);
-    char *megaString = calloc((tam+1),sizeof(char));
+    char *megaString = alocaString(tam);
     char c;
     while(fscanf(arq,"%c",&c) == 1){
         if(c != ' ' && c != '\n'){
             megaString[i] = c;
-            aux = 1;
+            aux = true;
             i++;
-        }else if((c == '\n' || c == ' ') && (aux == 1)){
+        }else if((c == '\n' || c == ' ') && (aux == true)){
             megaString[i] = ' ';
-            aux = 0;
+            aux = false;
             i++;
         }
     }
-    if(megaString[i-1] == ' ') megaString[i-1] = '\0';
+    if(megaString[i-1] == ' ') 
+        megaString[i-1] = '\0';
+
     String *string = create_string(megaString);
-    free(megaString);
+    liberaPonteiro(megaString);
     fclose(arq);
     return string;
 }
@@ -34,6 +36,15 @@ FILE *abreArquivo(char *adress){
     return arq;
 }
 
-void merge_string(){
+char *alocaString(long long unsigned tam){
+    char *string = calloc((tam+1),sizeof(char));
+    if(string == NULL){
+        printf("Erro durante a alocação de uma string!\n");
+        exit(1);
+    }
+    return string;
+}
 
+void liberaPonteiro(void *pointer){
+    free(pointer);
 }
