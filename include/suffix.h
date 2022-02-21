@@ -29,7 +29,7 @@ void shell_sort_suf_array(Suffix **a, int tam);
 
 int buscaBinSuff(Suffix* *a, int begin, int N, String *query);
 
-int rank(Suffix **a, String* query, int begin, int N);
+void rank(Suffix **a, String* query, int begin, int N, int context);
 
 
 #endif

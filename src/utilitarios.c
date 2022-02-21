@@ -48,3 +48,54 @@ char *alocaString(long long unsigned tam){
 void liberaPonteiro(void *pointer){
     free(pointer);
 }
+
+void relatorios(Suffix **arraySuff, int N, char comando, String *query, int context){
+    if(comando ==  'a'){
+        print_suf_array(arraySuff, N);
+    }
+    else if (comando == 'o'){
+        //shell_sort_suf_array(arraySuff, N);
+        sort_suf_array(arraySuff, N);
+        print_suf_array(arraySuff, N);
+    }
+    else if(comando == 'r'){
+        Suffix **arraySuffAux = create_suf_array(arraySuff[0]->s, N);
+        contabilizaTime(arraySuff, N, true);
+        contabilizaTime(arraySuffAux, N, false);
+
+        destroy_suf_array(arraySuffAux, N);
+    }
+    else if(comando == 'c'){
+        sort_suf_array(arraySuff, N);
+        rank(arraySuff, query, buscaBinSuff(arraySuff,0,N-1,query), N, context);
+    }
+    else if(comando == 's'){
+        do{
+            char queryAux [100];
+            scanf("%[^\n]",queryAux);
+            if(queryAux[0] == '\0'){
+                break;
+            }
+            query = create_string(queryAux);
+            sort_suf_array(arraySuff, N);
+            rank(arraySuff, query, buscaBinSuff(arraySuff,0,N-1,query), N, context);
+            destroy_string(query);
+        }while(1);
+    }             
+}
+
+void contabilizaTime(Suffix **arraySuff, int N, bool sort){
+    clock_t t_init,t_final;
+
+    t_init = clock();
+    if(sort == true){
+        sort_suf_array(arraySuff, N);
+        printf("Quick Sort\t");
+    }else{
+        shell_sort_suf_array(arraySuff, N);
+        printf("Shell Sort\t");
+    }
+    t_final = clock();
+    
+    printf("%.3f (s)\n",(float)(t_final - t_init)/1000000);
+}

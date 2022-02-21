@@ -43,7 +43,7 @@ int compareSuffix(const void *a, const void *b){
     int indexS1 = ((Suffix **)a)[0]->index;
     int indexS2 = ((Suffix **)b)[0]->index;
 
-    for(int i=indexS1, j=indexS2; i<S1->len ;i++, j++){
+    for(int i=indexS1, j=indexS2; i < S1->len && j < S2->len ;i++, j++){
         if(S1->c[i] > S2->c[j]) return 1;
         else if(S1->c[i] < S2->c[j]) return -1;
     }
@@ -100,13 +100,18 @@ int buscaBinSuff(Suffix* *a, int begin, int N, String *query){
 
 }
 
-int rank(Suffix **a, String* query, int begin, int N){
-    int contador = 1;
-    for(int i = begin + 1; i < N; i++){
+void rank(Suffix **a, String* query, int begin, int N, int context){
+    if(begin == -1){
+        printf("String nao encontrada!\n");
+        return;
+    }
+    for(int i = begin; i < N; i++){
         if(compare_from(a[i]->s, query, a[i]->index, 0) != 0){
             break;
         }
-        contador++;
+        int min = 0 > a[i]->index - context ? 0 : a[i]->index - context;
+        int max = N < a[i]->index + query->len + context ? N : a[i]->index + query->len + context;
+        print_substring(a[i]->s, min, max);
+        printf("\n");
     }
-    return contador;
 }
