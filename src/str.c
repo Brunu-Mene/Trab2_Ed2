@@ -38,17 +38,17 @@ void print_string(String *s) {
 //  1 se s > t
 //  0 se s == t
 int compare(String *s, String *t) {
-    return compare_from(s, t, 0);
+    return compare_from(s, t, 0, 0);
 }
 
 // Realiza a comparação das duas Strings dadas a partir do caractere 'd'.
-int compare_from(String *s, String *t, int d) {
+int compare_from(String *s, String *t, int a, int b) {
     int min = s->len < t->len ? s->len : t->len;
-    for (int i = d; i < min; i++) {
-        if (s->c[i] < t->c[i]) { return -1; }
-        if (s->c[i] > t->c[i]) { return  1; }
+    for (int i = a, j = b; j < min; i++, j++) {
+        if (s->c[i] < t->c[j]) { return -1; }
+        if (s->c[i] > t->c[j]) { return  1; }
     }
-    return s->len - t->len;
+    return 0;
 }
 
 // Cria um vetor vazio de ponteiros para String do tamanho dado.

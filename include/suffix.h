@@ -27,9 +27,9 @@ void print_suf_array(Suffix* *a, int N);
 void sort_suf_array(Suffix* *a, int N);
 void shell_sort_suf_array(Suffix **a, int tam);
 
-int rank(Suffix* *a, int N, String *query);
+int buscaBinSuff(Suffix* *a, int begin, int N, String *query);
 
+int rank(Suffix **a, String* query, int begin, int N);
 
-int tamanhoSuffix(Suffix *suf);
 
 #endif

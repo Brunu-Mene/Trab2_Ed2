@@ -47,7 +47,6 @@ int compareSuffix(const void *a, const void *b){
         if(S1->c[i] > S2->c[j]) return 1;
         else if(S1->c[i] < S2->c[j]) return -1;
     }
-    if(indexS1 == indexS2) return 0;
     return indexS1 - indexS2;
 }
 
@@ -79,6 +78,35 @@ void shell_sort_suf_array(Suffix **a, int tam){
     }while(gap > 1);
 }
 
-int rank(Suffix* *a, int N, String *query){
-    
+int buscaBinSuff(Suffix* *a, int begin, int N, String *query){
+    if(begin > N){
+        return -1;
+    }
+    int index = (N + begin)/2;
+
+    if(compare_from(a[index]->s, query, a[index]->index, 0) == 0){
+        int decrementador = 0;
+        for(int i = index - 1; i >= 0 ;i--){
+            if(compare_from(a[i]->s, query, a[i]->index, 0) == 0){
+                decrementador++;
+            }else break;
+        }
+        return index - decrementador;
+    }else if(compare_from(a[index]->s, query, a[index]->index, 0) == 1){
+        return buscaBinSuff(a, begin, index - 1, query);
+    }else{
+        return buscaBinSuff(a, index + 1, N, query);
+    }
+
+}
+
+int rank(Suffix **a, String* query, int begin, int N){
+    int contador = 1;
+    for(int i = begin + 1; i < N; i++){
+        if(compare_from(a[i]->s, query, a[i]->index, 0) != 0){
+            break;
+        }
+        contador++;
+    }
+    return contador;
 }

@@ -25,8 +25,8 @@ void print_string(String *s);
 //  0 se s == t
 int compare(String *s, String *t);
 
-// Realiza a comparação das duas Strings dadas a partir do caractere 'd'.
-int compare_from(String *s, String *t, int d);
+// Realiza a comparação das duas Strings dadas a partir do caractere 'a' e 'b'.
+int compare_from(String *s, String *t, int a, int b);
 
 // Cria um vetor vazio de ponteiros para String do tamanho dado.
 String** create_str_array(int N);
