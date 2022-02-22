@@ -1,6 +1,7 @@
 #include "../include/utilitarios.h"
 #include "../include/suffix.h"
 
+//o 5 parametro aparenemente é passado entre aspas
 int main(int argv, char **args){
     String *query = NULL;
     if(argv == 5) query = create_string(args[4]);

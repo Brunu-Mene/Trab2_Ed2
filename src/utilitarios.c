@@ -45,6 +45,15 @@ char *alocaString(long long unsigned tam){
     return string;
 }
 
+char* capturaString(){
+    char sAux[150];
+    for(int i=0; i<150 ;i++) sAux[i] = '\0';
+    scanf("%[^\n]",sAux);
+    char *s = strdup(sAux);
+
+    return s;
+}
+
 void liberaPonteiro(void *pointer){
     free(pointer);
 }
@@ -69,18 +78,21 @@ void relatorios(Suffix **arraySuff, int N, char comando, String *query, int cont
         sort_suf_array(arraySuff, N);
         rank(arraySuff, query, buscaBinSuff(arraySuff,0,N-1,query), N, context);
     }
-    else if(comando == 's'){
-        do{
-            char queryAux [100];
-            scanf("%[^\n]",queryAux);
-            if(queryAux[0] == '\0'){
+    else if(comando == 's'){ 
+        sort_suf_array(arraySuff, N);
+        while(1){
+            char *queryAux = capturaString();
+            getchar();
+            if(strcmp(queryAux,"") == 0){
+                liberaPonteiro(queryAux);
                 break;
             }
             query = create_string(queryAux);
-            sort_suf_array(arraySuff, N);
             rank(arraySuff, query, buscaBinSuff(arraySuff,0,N-1,query), N, context);
+            printf("\n");
             destroy_string(query);
-        }while(1);
+            liberaPonteiro(queryAux);
+        }
     }             
 }
 

@@ -43,11 +43,13 @@ int compareSuffix(const void *a, const void *b){
     int indexS1 = ((Suffix **)a)[0]->index;
     int indexS2 = ((Suffix **)b)[0]->index;
 
-    for(int i=indexS1, j=indexS2; i < S1->len && j < S2->len ;i++, j++){
+    //nao tenho ctz se isso ta certo, testar dps
+    return compare_from(S1,S2,indexS1,indexS2);
+    /*for(int i=indexS1, j=indexS2; i < S1->len && j < S2->len ;i++, j++){
         if(S1->c[i] > S2->c[j]) return 1;
         else if(S1->c[i] < S2->c[j]) return -1;
     }
-    return indexS1 - indexS2;
+    return indexS1 - indexS2;*/
 }
 
 void sort_suf_array(Suffix* *a, int N){
