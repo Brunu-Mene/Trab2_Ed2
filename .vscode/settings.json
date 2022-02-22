@@ -2,6 +2,7 @@
     "files.associations": {
         "utilitarios.h": "c",
         "stdio.h": "c",
-        "suffix.h": "c"
+        "suffix.h": "c",
+        "ctype.h": "c"
     }
 }

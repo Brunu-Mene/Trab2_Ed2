@@ -11,13 +11,10 @@
 
 String* converteArquivo(char *adress);
 FILE *abreArquivo(char *adress);
-void merge_string();
-
-
 char *alocaString(long long unsigned tam);
+char* capturaString();
 void liberaPonteiro(void *pointer);
-
-void relatorios(Suffix **arraySuff, int N, char comando, String *query, int context);
-void contabilizaTime(Suffix **arraySuff, int N, bool sort);
+void relatorios(Suffix **arraySuff, int N,int argv, char **parametros);
+void contabilizaTempo(Suffix **arraySuff, int N, bool sort);
 
 #endif

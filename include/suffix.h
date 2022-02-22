@@ -4,6 +4,7 @@
 #include "str.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include <ctype.h>
 
 typedef struct {
     String *s;
@@ -22,6 +23,7 @@ void destroy_suf_array(Suffix* *a, int N);
 
 void print_suf_array(Suffix* *a, int N);
 
+int compareSuffix(const void *a, const void *b);
 // Use uma (ou mais) funcoes deste tipo para ordenar
 // o arry de sufixos usando o qsort e outro metodo de sua escolha
 void sort_suf_array(Suffix* *a, int N);

@@ -45,8 +45,10 @@ int compare(String *s, String *t) {
 int compare_from(String *s, String *t, int a, int b) {
     int min = s->len < t->len ? s->len : t->len;
     for (int i = a, j = b; j < min; i++, j++) {
-        if (s->c[i] < t->c[j]) { return -1; }
-        if (s->c[i] > t->c[j]) { return  1; }
+        char c1 = toupper(s->c[i]);
+        char c2 = toupper(t->c[j]);
+        if(c1 > c2) return 1;
+        else if(c1 < c2) return -1;
     }
     return 0;
 }

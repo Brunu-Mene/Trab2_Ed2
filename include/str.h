@@ -2,6 +2,7 @@
 #define STR_H
 
 #include <stdbool.h>
+#include <ctype.h>
 
 // Novo tipo de strings para evitar o inferno astral de ter de lidar com
 // array de char terminado por '\0'.

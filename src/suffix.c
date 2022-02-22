@@ -42,14 +42,14 @@ int compareSuffix(const void *a, const void *b){
     String *S2 = ((Suffix **)b)[0]->s;
     int indexS1 = ((Suffix **)a)[0]->index;
     int indexS2 = ((Suffix **)b)[0]->index;
-
-    //nao tenho ctz se isso ta certo, testar dps
-    return compare_from(S1,S2,indexS1,indexS2);
-    /*for(int i=indexS1, j=indexS2; i < S1->len && j < S2->len ;i++, j++){
-        if(S1->c[i] > S2->c[j]) return 1;
-        else if(S1->c[i] < S2->c[j]) return -1;
+    
+    for(int i=indexS1, j=indexS2; i < S1->len && j < S2->len ;i++, j++){
+        char c1 = toupper(S1->c[i]);
+        char c2 = toupper(S2->c[j]);
+        if(c1 > c2) return 1;
+        else if(c1 < c2) return -1;
     }
-    return indexS1 - indexS2;*/
+    return indexS1 - indexS2;
 }
 
 void sort_suf_array(Suffix* *a, int N){
