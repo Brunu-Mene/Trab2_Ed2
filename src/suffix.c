@@ -56,18 +56,18 @@ void sort_suf_array(Suffix* *a, int N){
     qsort(a,N,sizeof(Suffix *),compareSuffix);
 }
 
-void shell_sort_suf_array(Suffix **a, int tam){
+void shell_sort_suf_array(Suffix **a, int N){
     int i , j ;
     int gap = 1;
     Suffix *value;
 
     do {
         gap = 3*gap+1;
-    } while(gap < tam);
+    } while(gap < N);
     
     do {
         gap /= 3;
-        for(i = gap; i < tam; i++) {
+        for(i = gap; i < N; i++) {
             value = a[i];
             j = i - gap;
                 
