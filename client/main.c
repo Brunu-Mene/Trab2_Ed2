@@ -1,7 +1,6 @@
 #include "../include/utilitarios.h"
 #include "../include/suffix.h"
 
-//o 5 parametro aparenemente é passado entre aspas
 int main(int argv, char **args){
     if(argv < 3){
         printf("Erro na passagem de parametros!\n");
