@@ -107,7 +107,7 @@ int buscaBinSuff(Suffix* *a, int begin, int N, String *query);
 * @param N: inteiro que representa a quantidade de caracteres do texto principal;
 * @param context: inteiro que representa quantidade de caracteres que serao impressos antes e depois da query;
 */
-void rank(Suffix **a, String* query, int begin, int N, int context);
+void ocorrenciasQuery(Suffix **a, String* query, int begin, int N, int context);
 
 
 #endif

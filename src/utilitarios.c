@@ -82,7 +82,7 @@ void relatorios(Suffix **arraySuff, int N, int argv,char **args){
         }
         String *query = create_string(args[4]);
         sort_suf_array(arraySuff, N);
-        rank(arraySuff, query, buscaBinSuff(arraySuff,0,N-1,query), N, atoi(args[3]));
+        ocorrenciasQuery(arraySuff, query, buscaBinSuff(arraySuff,0,N-1,query), N, atoi(args[3]));
         destroy_string(query);
     }
     else if(comando == 's'){
@@ -100,7 +100,7 @@ void relatorios(Suffix **arraySuff, int N, int argv,char **args){
                 break;
             }
             String *query = create_string(queryAux);
-            rank(arraySuff, query, buscaBinSuff(arraySuff,0,N-1,query), N, context);
+            ocorrenciasQuery(arraySuff, query, buscaBinSuff(arraySuff,0,N-1,query), N, context);
             printf("\n");
 
             destroy_string(query);

@@ -102,7 +102,7 @@ int buscaBinSuff(Suffix* *a, int begin, int N, String *query){
 
 }
 
-void rank(Suffix **a, String* query, int begin, int N, int context){
+void ocorrenciasQuery(Suffix **a, String* query, int begin, int N, int context){
     if(begin == -1){
         printf("String nao encontrada!\n");
         return;
